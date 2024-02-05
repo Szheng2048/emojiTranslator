@@ -9,10 +9,23 @@ submitButton.addEventListener("click",()=>{
             typeOfTranslation = choice.value
         }
     }
+    translateText()
+    
+    
+})
+
+let typeOfArr = ["encode","translate","madlib","search"]
+
+//second switch statement
+
+function translateText (){
     switch(typeOfTranslation){
-        case "encode": results.innerText = encode(transLatorinput.value);
-        case "translate": results.innerText = translate(transLatorinput.value);
+        case "encode": results.innerText = encode(transLatorinput.value)
+        break;
+        case "translate": results.innerText = translate(transLatorinput.value)
+        break;
         case "madlib": results.innerText = madlib(transLatorinput.value)
+        break;
         case "search": results.innerText = ""
         let objArray = search(transLatorinput.value)
         for(let obj of objArray){
@@ -22,25 +35,9 @@ submitButton.addEventListener("click",()=>{
         } if(objArray.length === 0){
             results.innerText = "no emojis were found"
         };
-        case "random": let ranDomCase = Math.floor(Math.random() * 4)
-        if(ranDomCase === 0){
-            results.innerText = encode(transLatorinput.value)
-        } else if(ranDomCase === 1){
-            results.innerText = translate(transLatorinput.value)
-        } else if(ranDomCase === 2){
-            results.innerText = madlib(transLatorinput.value)
-        } else if(ranDomCase === 3){
-            results.innerText = ""
-        let objArray = search(transLatorinput.value)
-        for(let obj of objArray){
-            let newStr = document.createElement("p")
-            newStr.innerText = obj.symbol
-            results.appendChild(newStr)
-        } if(objArray.length === 0){
-            results.innerText = "no emojis were found"
-        }
-        }
-    }
-    
-    
-})
+        case "random": {typeOfTranslation = randomElement(typeOfArr)
+        translateText()
+        break}
+        ;
+        default : break ;
+    }}
