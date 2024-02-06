@@ -34,7 +34,7 @@ function translateText (){
             results.appendChild(newStr)
         } if(objArray.length === 0){
             results.innerText = "no emojis were found"
-        };
+        }break;
         case "random": {typeOfTranslation = randomElement(typeOfArr)
         translateText()
         break}
